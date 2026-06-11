@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>vivlica | 幻想的な深海の世界</title>
-<meta name="description" content="vivlica - 青い深海を魚たちが泳ぐ、幻想的で未来的なホームページ。魚にふれると流れ星に変わります。">
+<meta name="description" content="vivlica - 青い深海を光の魚たちが泳ぐ、幻想的で未来的なホームページ。魚にふれると流れ星に変わります。">
 <meta name="keywords" content="vivlica, ビブリカ, 海, 魚, 流れ星, 幻想的">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://ka1tetsu.github.io/vivlica/">
 <meta property="og:title" content="vivlica | 幻想的な深海の世界">
-<meta property="og:description" content="青い深海を魚たちが泳ぐ、幻想的で未来的なホームページ。魚にふれると流れ星に変わります。">
+<meta property="og:description" content="青い深海を光の魚たちが泳ぐ、幻想的で未来的なホームページ。魚にふれると流れ星に変わります。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ka1tetsu.github.io/vivlica/">
 <meta property="og:site_name" content="vivlica">
@@ -20,7 +20,7 @@
   "@type": "WebSite",
   "name": "vivlica",
   "url": "https://ka1tetsu.github.io/vivlica/",
-  "description": "青い深海を魚たちが泳ぐ、幻想的で未来的なホームページ"
+  "description": "青い深海を光の魚たちが泳ぐ、幻想的で未来的なホームページ"
 }
 </script>
 <style>
@@ -30,8 +30,8 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #020818;
-    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+    background: #010514;
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
     touch-action: none;
     -webkit-user-select: none;
     user-select: none;
@@ -41,12 +41,17 @@
     position: fixed;
     inset: 0;
     display: block;
-    background: linear-gradient(180deg,
-      #03102e 0%,
-      #041a44 25%,
-      #052458 50%,
-      #03306e 75%,
-      #021c4a 100%);
+  }
+
+  .vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background:
+      radial-gradient(ellipse at 50% 45%,
+        rgba(0, 0, 0, 0) 45%,
+        rgba(1, 4, 18, 0.45) 100%);
   }
 
   .overlay {
@@ -61,29 +66,30 @@
   }
 
   .logo {
-    font-size: clamp(2.6rem, 8vw, 5.5rem);
+    font-size: clamp(2.4rem, 8vw, 5.2rem);
     font-weight: 200;
-    letter-spacing: 0.45em;
-    text-indent: 0.45em;
-    color: #eaf6ff;
+    letter-spacing: 0.55em;
+    text-indent: 0.55em;
+    color: #f2faff;
     text-shadow:
-      0 0 12px rgba(120, 200, 255, 0.9),
-      0 0 40px rgba(60, 150, 255, 0.7),
-      0 0 90px rgba(40, 110, 255, 0.5);
-    animation: glowPulse 4s ease-in-out infinite;
+      0 0 14px rgba(140, 215, 255, 0.95),
+      0 0 45px rgba(90, 170, 255, 0.75),
+      0 0 110px rgba(120, 110, 255, 0.55);
+    animation: glowPulse 6s ease-in-out infinite;
   }
 
   .greeting {
-    margin-top: 1.4rem;
-    font-size: clamp(1.1rem, 3.4vw, 1.9rem);
+    margin-top: 1.6rem;
+    font-size: clamp(1.05rem, 3.4vw, 1.8rem);
     font-weight: 300;
-    letter-spacing: 0.6em;
-    text-indent: 0.6em;
-    color: #aee0ff;
+    letter-spacing: 0.7em;
+    text-indent: 0.7em;
+    color: #c8e9ff;
     text-shadow:
-      0 0 10px rgba(130, 200, 255, 0.8),
-      0 0 30px rgba(70, 150, 255, 0.5);
-    animation: fadeFloat 6s ease-in-out infinite;
+      0 0 12px rgba(150, 215, 255, 0.85),
+      0 0 36px rgba(110, 160, 255, 0.55),
+      0 0 70px rgba(180, 130, 255, 0.35);
+    animation: fadeFloat 7s ease-in-out infinite;
   }
 
   .hint {
@@ -92,34 +98,35 @@
     left: 0;
     right: 0;
     text-align: center;
-    font-size: clamp(0.65rem, 2vw, 0.85rem);
-    letter-spacing: 0.35em;
-    text-indent: 0.35em;
-    color: rgba(160, 210, 255, 0.55);
+    font-size: clamp(0.62rem, 2vw, 0.8rem);
+    letter-spacing: 0.4em;
+    text-indent: 0.4em;
+    color: rgba(175, 220, 255, 0.5);
     pointer-events: none;
     z-index: 10;
-    animation: hintBlink 5s ease-in-out infinite;
+    animation: hintBlink 6s ease-in-out infinite;
   }
 
   @keyframes glowPulse {
-    0%, 100% { text-shadow: 0 0 12px rgba(120,200,255,.9), 0 0 40px rgba(60,150,255,.7), 0 0 90px rgba(40,110,255,.5); }
-    50%      { text-shadow: 0 0 18px rgba(150,220,255,1),  0 0 60px rgba(80,170,255,.9), 0 0 130px rgba(50,130,255,.7); }
+    0%, 100% { text-shadow: 0 0 14px rgba(140,215,255,.95), 0 0 45px rgba(90,170,255,.75), 0 0 110px rgba(120,110,255,.55); }
+    50%      { text-shadow: 0 0 22px rgba(170,230,255,1),  0 0 70px rgba(110,190,255,.95), 0 0 150px rgba(160,130,255,.75); }
   }
 
   @keyframes fadeFloat {
-    0%, 100% { opacity: 0.85; transform: translateY(0); }
-    50%      { opacity: 1;    transform: translateY(-6px); }
+    0%, 100% { opacity: 0.8; transform: translateY(0); }
+    50%      { opacity: 1;   transform: translateY(-8px); }
   }
 
   @keyframes hintBlink {
-    0%, 100% { opacity: 0.3; }
-    50%      { opacity: 0.8; }
+    0%, 100% { opacity: 0.25; }
+    50%      { opacity: 0.75; }
   }
 </style>
 </head>
 <body>
 
 <canvas id="ocean"></canvas>
+<div class="vignette"></div>
 
 <div class="overlay">
   <h1 class="logo">vivlica</h1>
@@ -136,6 +143,22 @@
   const ctx = canvas.getContext('2d');
 
   let W = 0, H = 0, DPR = 1;
+  let bgFade = null, bgFull = null;
+
+  function makeGradients() {
+    // 毎フレーム薄く重ねるグラデーション（残像を残すため低アルファ）
+    bgFade = ctx.createLinearGradient(0, 0, 0, H);
+    bgFade.addColorStop(0,   'rgba(2, 6, 26, 0.16)');
+    bgFade.addColorStop(0.35,'rgba(4, 14, 48, 0.16)');
+    bgFade.addColorStop(0.7, 'rgba(6, 24, 70, 0.16)');
+    bgFade.addColorStop(1,   'rgba(2, 10, 40, 0.16)');
+
+    bgFull = ctx.createLinearGradient(0, 0, 0, H);
+    bgFull.addColorStop(0,   '#02061a');
+    bgFull.addColorStop(0.35,'#040e30');
+    bgFull.addColorStop(0.7, '#061846');
+    bgFull.addColorStop(1,   '#020a28');
+  }
 
   function resize() {
     DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -146,6 +169,9 @@
     canvas.style.width = W + 'px';
     canvas.style.height = H + 'px';
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    makeGradients();
+    ctx.fillStyle = bgFull;
+    ctx.fillRect(0, 0, W, H);
   }
   resize();
   window.addEventListener('resize', resize);
@@ -153,119 +179,108 @@
   const rand = (a, b) => a + Math.random() * (b - a);
   const TAU = Math.PI * 2;
 
-  const FISH_COLORS = [
-    { body: '#4fc3f7', glow: 'rgba(79,195,247,'  },
-    { body: '#7dd3fc', glow: 'rgba(125,211,252,' },
-    { body: '#38bdf8', glow: 'rgba(56,189,248,'  },
-    { body: '#a5d8ff', glow: 'rgba(165,216,255,' },
-    { body: '#22d3ee', glow: 'rgba(34,211,238,'  },
-    { body: '#60a5fa', glow: 'rgba(96,165,250,'  },
-  ];
+  // 青を軸に、紫・桃・金の差し色（チームラボ的な光の色彩）
+  const HUES = [190, 198, 206, 215, 228, 252, 285, 318];
+  const ACCENT_HUES = [318, 45, 285];
 
-  /* ---------- 魚 ---------- */
+  // ゆらぎの流れ場 —— 魚も光もこの流れに乗る
+  function flowAngle(x, y, t) {
+    return Math.sin(y * 0.0028 + t * 0.00038) * 0.9
+         + Math.cos(x * 0.0021 - t * 0.00027) * 0.7
+         + Math.sin((x + y) * 0.0011 + t * 0.0002) * 0.5;
+  }
+
+  /* ---------- 光の魚（光の帯を曳いて泳ぐ） ---------- */
   class Fish {
     constructor(fromEdge) { this.reset(fromEdge); }
 
     reset(fromEdge) {
-      this.size = rand(14, 30);
-      this.speed = rand(0.5, 1.4) * (30 / this.size) * 0.9;
-      this.dir = Math.random() < 0.5 ? 1 : -1;
-      this.y = rand(H * 0.12, H * 0.92);
-      this.x = fromEdge
-        ? (this.dir === 1 ? -this.size * 4 : W + this.size * 4)
-        : rand(0, W);
-      this.wavePhase = rand(0, TAU);
-      this.waveAmp = rand(0.25, 0.7);
-      this.waveFreq = rand(0.008, 0.02);
-      this.tailPhase = rand(0, TAU);
-      this.color = FISH_COLORS[Math.floor(Math.random() * FISH_COLORS.length)];
-      this.alive = true;
+      this.size = rand(5, 11);
+      this.speed = rand(1.1, 2.4);
+      this.hue = HUES[Math.floor(Math.random() * HUES.length)];
+      this.hueDrift = rand(-0.06, 0.06);
+      this.heading = rand(0, TAU);
+      this.wander = rand(0, TAU);
+      this.y = rand(H * 0.08, H * 0.95);
+      this.x = fromEdge ? (Math.random() < 0.5 ? -40 : W + 40) : rand(0, W);
+      if (fromEdge) this.heading = this.x < 0 ? 0 : Math.PI;
+      this.trail = [];
+      this.trailMax = Math.floor(rand(26, 46));
+      this.sparkleTimer = 0;
     }
 
     update(t) {
-      this.x += this.speed * this.dir;
-      this.y += Math.sin(t * this.waveFreq + this.wavePhase) * this.waveAmp;
-      this.tailPhase += 0.18 + this.speed * 0.06;
+      const flow = flowAngle(this.x, this.y, t);
+      this.wander += rand(-0.12, 0.12);
+      const target = flow + Math.sin(this.wander) * 0.7;
+      // なめらかに流れへ向きを合わせる
+      let d = target - this.heading;
+      d = Math.atan2(Math.sin(d), Math.cos(d));
+      this.heading += d * 0.035;
 
-      const margin = this.size * 5;
-      if ((this.dir === 1 && this.x > W + margin) ||
-          (this.dir === -1 && this.x < -margin)) {
-        this.reset(true);
+      this.x += Math.cos(this.heading) * this.speed;
+      this.y += Math.sin(this.heading) * this.speed;
+      this.hue += this.hueDrift;
+
+      this.trail.push({ x: this.x, y: this.y });
+      if (this.trail.length > this.trailMax) this.trail.shift();
+
+      // 画面外へ出たら反対側から（軌跡は引き継がない）
+      let wrapped = false;
+      if (this.x < -60) { this.x = W + 50; wrapped = true; }
+      if (this.x > W + 60) { this.x = -50; wrapped = true; }
+      if (this.y < -60) { this.y = H + 50; wrapped = true; }
+      if (this.y > H + 60) { this.y = -50; wrapped = true; }
+      if (wrapped) this.trail = [];
+
+      // 鱗のきらめきを時折こぼす
+      this.sparkleTimer -= 1;
+      if (this.sparkleTimer <= 0) {
+        this.sparkleTimer = rand(6, 18);
+        sparkles.push(new Sparkle(this.x, this.y, this.hue));
       }
     }
 
     draw(ctx) {
-      const s = this.size;
-      const tail = Math.sin(this.tailPhase) * s * 0.45;
+      const n = this.trail.length;
+      // 光の帯（尾は細く淡く、頭に向かって太く明るく）
+      for (let i = 0; i < n; i++) {
+        const p = this.trail[i];
+        const f = (i + 1) / n;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, this.size * f, 0, TAU);
+        ctx.fillStyle = 'hsla(' + this.hue + ', 95%, ' + (55 + f * 20) + '%, ' + (0.055 * f) + ')';
+        ctx.fill();
+      }
 
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.scale(this.dir, 1);
-
-      ctx.shadowColor = this.color.glow + '0.9)';
-      ctx.shadowBlur = s * 1.2;
-
-      // 尾びれ
+      // 頭部 —— 白い芯を持つ光
+      const r = this.size * 2.4;
+      const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, r);
+      g.addColorStop(0, 'rgba(255,255,255,0.95)');
+      g.addColorStop(0.25, 'hsla(' + this.hue + ', 100%, 78%, 0.8)');
+      g.addColorStop(1, 'hsla(' + this.hue + ', 100%, 60%, 0)');
       ctx.beginPath();
-      ctx.moveTo(-s * 0.85, 0);
-      ctx.quadraticCurveTo(-s * 1.5, tail * 0.3, -s * 1.7, tail - s * 0.4);
-      ctx.quadraticCurveTo(-s * 1.45, tail * 0.5, -s * 1.35, tail * 0.2);
-      ctx.quadraticCurveTo(-s * 1.45, tail * 0.5, -s * 1.7, tail + s * 0.4);
-      ctx.quadraticCurveTo(-s * 1.5, tail * 0.3, -s * 0.85, 0);
-      ctx.fillStyle = this.color.glow + '0.55)';
+      ctx.arc(this.x, this.y, r, 0, TAU);
+      ctx.fillStyle = g;
       ctx.fill();
-
-      // 胴体
-      const grad = ctx.createLinearGradient(-s, 0, s, 0);
-      grad.addColorStop(0, this.color.glow + '0.65)');
-      grad.addColorStop(0.6, this.color.body);
-      grad.addColorStop(1, '#e8f7ff');
-      ctx.beginPath();
-      ctx.moveTo(s, 0);
-      ctx.quadraticCurveTo(s * 0.35, -s * 0.62, -s * 0.55, -s * 0.28);
-      ctx.quadraticCurveTo(-s * 0.95, 0, -s * 0.55, s * 0.28);
-      ctx.quadraticCurveTo(s * 0.35, s * 0.62, s, 0);
-      ctx.fillStyle = grad;
-      ctx.fill();
-
-      // 背びれ
-      ctx.beginPath();
-      ctx.moveTo(-s * 0.1, -s * 0.42);
-      ctx.quadraticCurveTo(s * 0.1, -s * 0.85, s * 0.32, -s * 0.4);
-      ctx.fillStyle = this.color.glow + '0.5)';
-      ctx.fill();
-
-      ctx.shadowBlur = 0;
-
-      // 目
-      ctx.beginPath();
-      ctx.arc(s * 0.55, -s * 0.08, s * 0.09, 0, TAU);
-      ctx.fillStyle = '#04122e';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(s * 0.58, -s * 0.11, s * 0.03, 0, TAU);
-      ctx.fillStyle = '#ffffff';
-      ctx.fill();
-
-      ctx.restore();
     }
 
     hit(px, py) {
       const dx = px - this.x;
       const dy = py - this.y;
-      const r = Math.max(this.size * 1.6, 28);
+      const r = Math.max(this.size * 4.5, 34);
       return dx * dx + dy * dy < r * r;
     }
   }
 
   /* ---------- 流れ星 ---------- */
   class ShootingStar {
-    constructor(x, y, color) {
+    constructor(x, y, hue) {
       this.x = x;
       this.y = y;
-      this.color = color;
-      const angle = rand(-Math.PI * 0.78, -Math.PI * 0.55); // 斜め上へ
-      const speed = rand(9, 14);
+      this.hue = hue;
+      const angle = rand(-Math.PI * 0.76, -Math.PI * 0.56);
+      const speed = rand(8, 13);
       this.vx = Math.cos(angle) * speed * (Math.random() < 0.5 ? 1 : -1);
       this.vy = Math.sin(angle) * speed;
       this.life = 1;
@@ -275,183 +290,230 @@
     }
 
     update() {
-      this.trail.push({ x: this.x, y: this.y, life: 1 });
-      if (this.trail.length > 36) this.trail.shift();
-      for (const p of this.trail) p.life *= 0.93;
+      this.trail.push({ x: this.x, y: this.y });
+      if (this.trail.length > 42) this.trail.shift();
 
       this.x += this.vx;
       this.y += this.vy;
-      this.vy -= 0.06; // ゆるやかに加速して天へ
+      this.vy -= 0.055;
       this.twinkle += 0.4;
 
-      if (this.y < -80 || this.x < -120 || this.x > W + 120) {
-        this.life -= 0.08;
+      if (Math.random() < 0.5) {
+        sparkles.push(new Sparkle(this.x + rand(-6, 6), this.y + rand(-6, 6), this.hue));
       }
+
+      if (this.y < -90 || this.x < -130 || this.x > W + 130) this.life -= 0.07;
       return this.life > 0;
     }
 
     draw(ctx) {
-      // 軌跡
-      for (let i = 0; i < this.trail.length; i++) {
+      const n = this.trail.length;
+      for (let i = 0; i < n; i++) {
         const p = this.trail[i];
-        const f = i / this.trail.length;
+        const f = (i + 1) / n;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, this.size * f * p.life, 0, TAU);
-        ctx.fillStyle = this.color.glow + (0.5 * f * p.life) + ')';
+        ctx.arc(p.x, p.y, this.size * f, 0, TAU);
+        ctx.fillStyle = 'hsla(' + this.hue + ', 100%, 75%, ' + (0.4 * f * this.life) + ')';
         ctx.fill();
       }
 
-      // 星本体（十字の煌めき）
       const tw = 1 + Math.sin(this.twinkle) * 0.35;
-      const r = this.size * 2.2 * tw;
-
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.shadowColor = '#ffffff';
-      ctx.shadowBlur = 25;
-
-      const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, r);
-      grad.addColorStop(0, '#ffffff');
-      grad.addColorStop(0.4, this.color.glow + '0.9)');
-      grad.addColorStop(1, this.color.glow + '0)');
+      const r = this.size * 2.4 * tw;
+      const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, r);
+      g.addColorStop(0, 'rgba(255,255,255,0.98)');
+      g.addColorStop(0.4, 'hsla(' + this.hue + ', 100%, 80%, 0.9)');
+      g.addColorStop(1, 'hsla(' + this.hue + ', 100%, 65%, 0)');
       ctx.beginPath();
-      ctx.arc(0, 0, r, 0, TAU);
-      ctx.fillStyle = grad;
+      ctx.arc(this.x, this.y, r, 0, TAU);
+      ctx.fillStyle = g;
       ctx.fill();
 
-      ctx.strokeStyle = 'rgba(255,255,255,' + (0.85 * this.life) + ')';
-      ctx.lineWidth = 1.4;
+      ctx.strokeStyle = 'rgba(255,255,255,' + (0.8 * this.life) + ')';
+      ctx.lineWidth = 1.3;
       ctx.beginPath();
-      ctx.moveTo(-r * 1.7, 0); ctx.lineTo(r * 1.7, 0);
-      ctx.moveTo(0, -r * 1.7); ctx.lineTo(0, r * 1.7);
+      ctx.moveTo(this.x - r * 1.8, this.y); ctx.lineTo(this.x + r * 1.8, this.y);
+      ctx.moveTo(this.x, this.y - r * 1.8); ctx.lineTo(this.x, this.y + r * 1.8);
       ctx.stroke();
+    }
+  }
 
+  /* ---------- 花びらのような光（変身の瞬間に舞う） ---------- */
+  class Petal {
+    constructor(x, y, hue) {
+      this.x = x;
+      this.y = y;
+      this.hue = Math.random() < 0.5 ? hue : ACCENT_HUES[Math.floor(Math.random() * ACCENT_HUES.length)];
+      const a = rand(0, TAU);
+      const sp = rand(0.6, 4.5);
+      this.vx = Math.cos(a) * sp;
+      this.vy = Math.sin(a) * sp - rand(0.2, 1);
+      this.rot = rand(0, TAU);
+      this.rotSpeed = rand(-0.12, 0.12);
+      this.w = rand(2.5, 6);
+      this.h = rand(1.2, 2.6);
+      this.life = 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.vx *= 0.975;
+      this.vy = this.vy * 0.975 - 0.012; // ふわりと浮き上がる
+      this.rot += this.rotSpeed;
+      this.life -= 0.012;
+      return this.life > 0;
+    }
+
+    draw(ctx) {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rot);
+      ctx.beginPath();
+      ctx.ellipse(0, 0, this.w * this.life + 0.1, this.h * this.life + 0.1, 0, 0, TAU);
+      ctx.fillStyle = 'hsla(' + this.hue + ', 95%, 75%, ' + (0.8 * this.life) + ')';
+      ctx.fill();
       ctx.restore();
     }
   }
 
-  /* ---------- 変身バースト ---------- */
-  class Burst {
-    constructor(x, y, color) {
-      this.particles = [];
-      for (let i = 0; i < 26; i++) {
-        const a = rand(0, TAU);
-        const sp = rand(1, 6);
-        this.particles.push({
-          x, y,
-          vx: Math.cos(a) * sp,
-          vy: Math.sin(a) * sp,
-          life: 1,
-          size: rand(1.5, 4),
-          color,
-        });
-      }
+  /* ---------- きらめき ---------- */
+  class Sparkle {
+    constructor(x, y, hue) {
+      this.x = x + rand(-3, 3);
+      this.y = y + rand(-3, 3);
+      this.hue = hue;
+      this.r = rand(0.5, 1.8);
+      this.life = rand(0.5, 1);
+      this.vy = rand(-0.3, 0.1);
     }
 
     update() {
-      for (const p of this.particles) {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vx *= 0.96;
-        p.vy *= 0.96;
-        p.life -= 0.025;
-      }
-      this.particles = this.particles.filter(p => p.life > 0);
-      return this.particles.length > 0;
-    }
-
-    draw(ctx) {
-      for (const p of this.particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * p.life, 0, TAU);
-        ctx.fillStyle = p.color.glow + p.life + ')';
-        ctx.fill();
-      }
-    }
-  }
-
-  /* ---------- 泡 ---------- */
-  class Bubble {
-    constructor() { this.reset(true); }
-
-    reset(randomY) {
-      this.x = rand(0, W);
-      this.y = randomY ? rand(0, H) : H + 20;
-      this.r = rand(1.5, 5);
-      this.speed = rand(0.3, 1.1);
-      this.sway = rand(0, TAU);
-      this.swaySpeed = rand(0.01, 0.03);
-    }
-
-    update() {
-      this.y -= this.speed;
-      this.sway += this.swaySpeed;
-      this.x += Math.sin(this.sway) * 0.4;
-      if (this.y < -20) this.reset(false);
+      this.y += this.vy;
+      this.life -= 0.02;
+      return this.life > 0;
     }
 
     draw(ctx) {
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, TAU);
-      ctx.strokeStyle = 'rgba(170, 220, 255, 0.35)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(this.x - this.r * 0.3, this.y - this.r * 0.3, this.r * 0.3, 0, TAU);
-      ctx.fillStyle = 'rgba(220, 245, 255, 0.4)';
+      ctx.arc(this.x, this.y, this.r * this.life + 0.1, 0, TAU);
+      ctx.fillStyle = 'hsla(' + this.hue + ', 100%, 85%, ' + (0.75 * this.life) + ')';
       ctx.fill();
     }
   }
 
-  /* ---------- 漂う光の粒 ---------- */
-  class Mote {
-    constructor() {
-      this.x = rand(0, W);
-      this.y = rand(0, H);
-      this.r = rand(0.5, 2);
-      this.phase = rand(0, TAU);
-      this.speed = rand(0.05, 0.25);
+  /* ---------- 波紋 ---------- */
+  class Ripple {
+    constructor(x, y, big) {
+      this.x = x;
+      this.y = y;
+      this.r = big ? 6 : 3;
+      this.speed = big ? 4.2 : 2.6;
+      this.alpha = big ? 0.55 : 0.3;
     }
 
-    update(t) {
-      this.y -= this.speed;
-      if (this.y < -10) { this.y = H + 10; this.x = rand(0, W); }
-      this.alpha = 0.15 + 0.25 * (0.5 + 0.5 * Math.sin(t * 0.002 + this.phase));
+    update() {
+      this.r += this.speed;
+      this.speed *= 0.985;
+      this.alpha *= 0.955;
+      return this.alpha > 0.01;
     }
 
     draw(ctx) {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, TAU);
-      ctx.fillStyle = 'rgba(150, 210, 255, ' + this.alpha + ')';
+      ctx.strokeStyle = 'hsla(200, 100%, 80%, ' + this.alpha + ')';
+      ctx.lineWidth = 1.6;
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r * 0.62, 0, TAU);
+      ctx.strokeStyle = 'hsla(260, 100%, 82%, ' + this.alpha * 0.6 + ')';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
+
+  /* ---------- 漂う光の粒・玉ボケ ---------- */
+  class Mote {
+    constructor() {
+      this.x = rand(0, W);
+      this.y = rand(0, H);
+      this.r = rand(0.5, 2.2);
+      this.phase = rand(0, TAU);
+      this.speed = rand(0.06, 0.3);
+      this.hue = HUES[Math.floor(Math.random() * HUES.length)];
+    }
+
+    update(t) {
+      this.y -= this.speed;
+      this.x += Math.sin(t * 0.0006 + this.phase) * 0.25;
+      if (this.y < -10) { this.y = H + 10; this.x = rand(0, W); }
+      this.alpha = 0.12 + 0.3 * (0.5 + 0.5 * Math.sin(t * 0.0016 + this.phase));
+    }
+
+    draw(ctx) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, TAU);
+      ctx.fillStyle = 'hsla(' + this.hue + ', 90%, 80%, ' + this.alpha + ')';
+      ctx.fill();
+    }
+  }
+
+  class Bokeh {
+    constructor() {
+      this.x = rand(0, W);
+      this.y = rand(0, H);
+      this.r = rand(18, 70);
+      this.phase = rand(0, TAU);
+      this.hue = HUES[Math.floor(Math.random() * HUES.length)];
+      this.speed = rand(0.02, 0.1);
+    }
+
+    update(t) {
+      this.y -= this.speed;
+      if (this.y < -this.r) { this.y = H + this.r; this.x = rand(0, W); }
+      this.alpha = 0.015 + 0.02 * (0.5 + 0.5 * Math.sin(t * 0.0007 + this.phase));
+    }
+
+    draw(ctx) {
+      const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+      g.addColorStop(0, 'hsla(' + this.hue + ', 100%, 75%, ' + this.alpha + ')');
+      g.addColorStop(1, 'hsla(' + this.hue + ', 100%, 75%, 0)');
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, TAU);
+      ctx.fillStyle = g;
       ctx.fill();
     }
   }
 
   /* ---------- 状態 ---------- */
-  const FISH_COUNT = 13;
+  const FISH_COUNT = Math.min(16, Math.max(9, Math.floor(W * H / 90000)));
   const fishes = [];
   const stars = [];
-  const bursts = [];
-  const bubbles = [];
+  const petals = [];
+  const sparkles = [];
+  const ripples = [];
   const motes = [];
+  const bokehs = [];
   const respawnQueue = [];
 
   for (let i = 0; i < FISH_COUNT; i++) fishes.push(new Fish(false));
-  for (let i = 0; i < 22; i++) bubbles.push(new Bubble());
-  for (let i = 0; i < 60; i++) motes.push(new Mote());
+  for (let i = 0; i < 70; i++) motes.push(new Mote());
+  for (let i = 0; i < 9; i++) bokehs.push(new Bokeh());
 
   /* ---------- 魚 → 流れ星 ---------- */
   function transform(px, py) {
     for (let i = fishes.length - 1; i >= 0; i--) {
       const f = fishes[i];
       if (f.hit(px, py)) {
-        stars.push(new ShootingStar(f.x, f.y, f.color));
-        bursts.push(new Burst(f.x, f.y, f.color));
+        stars.push(new ShootingStar(f.x, f.y, f.hue));
+        for (let k = 0; k < 30; k++) petals.push(new Petal(f.x, f.y, f.hue));
+        ripples.push(new Ripple(f.x, f.y, true));
         fishes.splice(i, 1);
-        respawnQueue.push(performance.now() + 2200);
-        return;
+        respawnQueue.push(performance.now() + 2400);
+        return true;
       }
     }
+    return false;
   }
 
   function pointerPos(e) {
@@ -460,63 +522,77 @@
   }
 
   // PC: カーソルが触れたら / スマホ: タッチしたら
+  let lastMoveRipple = 0;
   window.addEventListener('pointermove', (e) => {
-    if (e.pointerType === 'mouse') {
-      const p = pointerPos(e);
-      transform(p.x, p.y);
+    if (e.pointerType !== 'mouse') return;
+    const p = pointerPos(e);
+    transform(p.x, p.y);
+    const now = performance.now();
+    if (now - lastMoveRipple > 160) {
+      lastMoveRipple = now;
+      ripples.push(new Ripple(p.x, p.y, false));
     }
   });
   window.addEventListener('pointerdown', (e) => {
     const p = pointerPos(e);
-    transform(p.x, p.y);
+    if (!transform(p.x, p.y)) ripples.push(new Ripple(p.x, p.y, true));
   });
 
-  /* ---------- 光のカーテン（ゴッドレイ） ---------- */
-  function drawRays(t) {
-    ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    for (let i = 0; i < 5; i++) {
-      const baseX = W * (0.12 + i * 0.19);
-      const sway = Math.sin(t * 0.0003 + i * 1.7) * W * 0.05;
-      const topX = baseX + sway;
-      const width = W * (0.04 + 0.02 * Math.sin(t * 0.0004 + i));
-      const grad = ctx.createLinearGradient(topX, 0, topX + W * 0.1, H);
-      grad.addColorStop(0, 'rgba(120, 190, 255, 0.10)');
-      grad.addColorStop(0.5, 'rgba(90, 160, 255, 0.04)');
-      grad.addColorStop(1, 'rgba(60, 130, 255, 0)');
+  /* ---------- オーロラのような光のリボン ---------- */
+  function drawAurora(t) {
+    for (let k = 0; k < 3; k++) {
+      const baseY = H * (0.22 + k * 0.27);
+      const hue = 195 + k * 38;
       ctx.beginPath();
-      ctx.moveTo(topX - width, 0);
-      ctx.lineTo(topX + width, 0);
-      ctx.lineTo(topX + width * 4 + W * 0.06, H);
-      ctx.lineTo(topX - width * 4 + W * 0.06, H);
-      ctx.closePath();
-      ctx.fillStyle = grad;
-      ctx.fill();
+      for (let x = -20; x <= W + 20; x += 24) {
+        const y = baseY
+          + Math.sin(x * 0.004 + t * 0.0005 + k * 2.1) * H * 0.05
+          + Math.sin(x * 0.0013 - t * 0.0003 + k) * H * 0.08;
+        if (x === -20) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = 'hsla(' + hue + ', 100%, 70%, 0.04)';
+      ctx.lineWidth = rand(26, 34);
+      ctx.lineCap = 'round';
+      ctx.stroke();
+      ctx.strokeStyle = 'hsla(' + hue + ', 100%, 80%, 0.05)';
+      ctx.lineWidth = 8;
+      ctx.stroke();
     }
-    ctx.restore();
   }
 
   /* ---------- メインループ ---------- */
   function frame(t) {
-    ctx.clearRect(0, 0, W, H);
-
-    drawRays(t);
-
-    for (const m of motes) { m.update(t); m.draw(ctx); }
-    for (const b of bubbles) { b.update(); b.draw(ctx); }
-
-    for (const f of fishes) { f.update(t); f.draw(ctx); }
+    // 低アルファで塗り重ねて残像（光の余韻）を残す
+    ctx.fillStyle = bgFade;
+    ctx.fillRect(0, 0, W, H);
 
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
+
+    drawAurora(t);
+
+    for (const b of bokehs) { b.update(t); b.draw(ctx); }
+    for (const m of motes) { m.update(t); m.draw(ctx); }
+
+    for (const f of fishes) { f.update(t); f.draw(ctx); }
+
+    for (let i = sparkles.length - 1; i >= 0; i--) {
+      if (!sparkles[i].update()) sparkles.splice(i, 1);
+      else sparkles[i].draw(ctx);
+    }
+    for (let i = petals.length - 1; i >= 0; i--) {
+      if (!petals[i].update()) petals.splice(i, 1);
+      else petals[i].draw(ctx);
+    }
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      if (!ripples[i].update()) ripples.splice(i, 1);
+      else ripples[i].draw(ctx);
+    }
     for (let i = stars.length - 1; i >= 0; i--) {
       if (!stars[i].update()) stars.splice(i, 1);
       else stars[i].draw(ctx);
     }
-    for (let i = bursts.length - 1; i >= 0; i--) {
-      if (!bursts[i].update()) bursts.splice(i, 1);
-      else bursts[i].draw(ctx);
-    }
+
     ctx.restore();
 
     // 魚の補充
