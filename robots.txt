@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ka1tetsu.github.io/vivlica/sitemap.xml
